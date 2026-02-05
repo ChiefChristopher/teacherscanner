@@ -1,4 +1,3 @@
-/* eslint-disable react/react-in-jsx-scope */
 import { Env } from '@env';
 import { useColorScheme } from 'nativewind';
 
@@ -22,7 +21,7 @@ export default function Settings() {
   const iconColor =
     colorScheme === 'dark' ? colors.neutral[400] : colors.neutral[500];
   return (
-    <>
+    <View className="flex-1">
       <FocusAwareStatusBar />
 
       <ScrollView>
@@ -80,6 +79,6 @@ export default function Settings() {
           </View>
         </View>
       </ScrollView>
-    </>
+    </View>
   );
 }

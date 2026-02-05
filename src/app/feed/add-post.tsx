@@ -46,7 +46,7 @@ export default function AddPost() {
     );
   };
   return (
-    <>
+    <View className="flex-1">
       <Stack.Screen
         options={{
           title: 'Add Post',
@@ -74,6 +74,6 @@ export default function AddPost() {
           testID="add-post-button"
         />
       </View>
-    </>
+    </View>
   );
 }

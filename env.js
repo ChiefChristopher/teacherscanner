@@ -1,4 +1,3 @@
-/* eslint-env node */
 /*
  * Env file to load and validate env variables
  * Be cautious; this file should not be imported into your source folder.
@@ -37,9 +36,9 @@ require('dotenv').config({
 
 const BUNDLE_ID = 'com.obytes'; // ios bundle id
 const PACKAGE = 'com.obytes'; // android package name
-const NAME = 'ObytesApp'; // app name
-const EXPO_ACCOUNT_OWNER = 'obytes'; // expo account owner
-const EAS_PROJECT_ID = 'c3e1075b-6fe7-4686-aa49-35b46a229044'; // eas project id
+const NAME = 'Speasy'; // app name
+const EXPO_ACCOUNT_OWNER = 'chrislay'; // expo account owner
+const EAS_PROJECT_ID = '9af8116b-e53c-48ef-87b9-7b0e9f249d89'; // eas project id
 const SCHEME = 'obytesApp'; // app scheme
 
 /**
@@ -79,7 +78,6 @@ const client = z.object({
   PACKAGE: z.string(),
   VERSION: z.string(),
 
-  // ADD YOUR CLIENT ENV VARS HERE
   API_URL: z.string(),
   VAR_NUMBER: z.number(),
   VAR_BOOL: z.boolean(),
@@ -90,6 +88,7 @@ const buildTime = z.object({
   EAS_PROJECT_ID: z.string(),
   // ADD YOUR BUILD TIME ENV VARS HERE
   SECRET_KEY: z.string(),
+  MONGODB_URI: z.string().url().startsWith('mongodb'),
 });
 
 /**
@@ -117,6 +116,7 @@ const _buildTimeEnv = {
   EAS_PROJECT_ID,
   // ADD YOUR ENV VARS HERE TOO
   SECRET_KEY: process.env.SECRET_KEY,
+  MONGODB_URI: process.env.MONGODB_URI,
 };
 
 /**

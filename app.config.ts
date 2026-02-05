@@ -1,19 +1,17 @@
-/* eslint-disable max-lines-per-function */
+import { Env } from '@env';
 import type { ConfigContext, ExpoConfig } from '@expo/config';
 import type { AppIconBadgeConfig } from 'app-icon-badge/types';
 
-import { ClientEnv, Env } from './env';
-
 const appIconBadgeConfig: AppIconBadgeConfig = {
-  enabled: Env.APP_ENV !== 'production',
+  enabled: (Env.APP_ENV ?? 'development') !== 'production',
   badges: [
     {
-      text: Env.APP_ENV,
+      text: Env.APP_ENV ?? 'development',
       type: 'banner',
       color: 'white',
     },
     {
-      text: Env.VERSION.toString(),
+      text: (Env.VERSION ?? '1.0.0').toString(),
       type: 'ribbon',
       color: 'white',
     },
@@ -22,14 +20,14 @@ const appIconBadgeConfig: AppIconBadgeConfig = {
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
-  name: Env.NAME,
-  description: `${Env.NAME} Mobile App`,
-  owner: Env.EXPO_ACCOUNT_OWNER,
-  scheme: Env.SCHEME,
-  slug: 'obytesapp',
-  version: Env.VERSION.toString(),
+  name: Env.NAME ?? 'Speasy',
+  description: `${Env.NAME ?? 'Speasy'} Mobile App`,
+  owner: Env.EXPO_ACCOUNT_OWNER ?? undefined,
+  scheme: Env.SCHEME ?? 'obytesApp',
+  slug: 'teacherscanner',
+  version: Env.VERSION ?? '1.0.0',
   orientation: 'portrait',
-  icon: './assets/icon.png',
+  icon: './assets/teacherscan.jpg',
   userInterfaceStyle: 'automatic',
   newArchEnabled: true,
   updates: {
@@ -38,7 +36,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   assetBundlePatterns: ['**/*'],
   ios: {
     supportsTablet: true,
-    bundleIdentifier: Env.BUNDLE_ID,
+    bundleIdentifier: Env.BUNDLE_ID ?? 'com.obytes',
     infoPlist: {
       ITSAppUsesNonExemptEncryption: false,
     },
@@ -48,13 +46,13 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   },
   android: {
     adaptiveIcon: {
-      foregroundImage: './assets/adaptive-icon.png',
+      foregroundImage: './assets/teacherscan.jpg',
       backgroundColor: '#2E3C4B',
     },
-    package: Env.PACKAGE,
+    package: Env.PACKAGE as string,
   },
   web: {
-    favicon: './assets/favicon.png',
+    favicon: './assets/teacherscan.jpg',
     bundler: 'metro',
   },
   plugins: [
@@ -62,7 +60,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       'expo-splash-screen',
       {
         backgroundColor: '#2E3C4B',
-        image: './assets/splash-icon.png',
+        image: './assets/teacherscan.jpg',
         imageWidth: 150,
       },
     ],
@@ -78,7 +76,6 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     ['react-native-edge-to-edge'],
   ],
   extra: {
-    ...ClientEnv,
     eas: {
       projectId: Env.EAS_PROJECT_ID,
     },
