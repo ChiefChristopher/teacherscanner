@@ -1,6 +1,7 @@
-import { Env } from '@env';
+//import { Env } from '@env';
 import type { ConfigContext, ExpoConfig } from '@expo/config';
 import type { AppIconBadgeConfig } from 'app-icon-badge/types';
+const { Env } = require('./env');
 
 const appIconBadgeConfig: AppIconBadgeConfig = {
   enabled: (Env.APP_ENV ?? 'development') !== 'production',
