@@ -78,8 +78,6 @@ const client = z.object({
   PACKAGE: z.string(),
   VERSION: z.string(),
 
-  API_URL: z.string(),
-  VAR_NUMBER: z.number(),
   VAR_BOOL: z.boolean(),
 });
 
@@ -87,7 +85,6 @@ const buildTime = z.object({
   EXPO_ACCOUNT_OWNER: z.string(),
   EAS_PROJECT_ID: z.string(),
   // ADD YOUR BUILD TIME ENV VARS HERE
-  SECRET_KEY: z.string(),
   MONGODB_URI: z.string().url().startsWith('mongodb'),
 });
 
@@ -103,8 +100,6 @@ const _clientEnv = {
   VERSION: packageJSON.version,
 
   // ADD YOUR ENV VARS HERE TOO
-  API_URL: process.env.API_URL,
-  VAR_NUMBER: Number(process.env.VAR_NUMBER),
   VAR_BOOL: process.env.VAR_BOOL === 'true',
 };
 
@@ -115,7 +110,6 @@ const _buildTimeEnv = {
   EXPO_ACCOUNT_OWNER,
   EAS_PROJECT_ID,
   // ADD YOUR ENV VARS HERE TOO
-  SECRET_KEY: process.env.SECRET_KEY,
   MONGODB_URI: process.env.MONGODB_URI,
 };
 
